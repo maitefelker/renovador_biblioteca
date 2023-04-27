@@ -38,5 +38,9 @@ for i in range(numero_de_livros):
     if data_atual == data_limite:
         botao_renovacao = driver.find_element(By.XPATH, f'//*[@id="emprestimos"]/tbody/tr[{i+1}]/td[1]/button')
         botao_renovacao.click()
+        print(f"Livro número {i+1} renovado")
+
+    else:
+        print(f"Livro número {i+1} não foi renovado (está antes ou depois do prazo")
 
 input("ENTER")
