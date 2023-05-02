@@ -11,7 +11,7 @@ import getpass
 
 usuario = os.environ['USER']
 senha = os.environ['SENHA']
-driver = webdriver.Chrome()
+driver = webdriver.Chrome(executable_path=r'/opt/hostedtoolcache/chromium/latest/x64/chrome')
 driver.get("https://portal.ufsm.br/biblioteca/login.html")
 
 campo_usuario = driver.find_element(By.XPATH, '//*[@id="login"]')
