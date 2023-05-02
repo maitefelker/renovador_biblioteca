@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
+from selenium.common.exceptions import NoSuchElementException
 
 import time
 from time import gmtime, strftime
@@ -9,8 +10,6 @@ import getpass
 
 usuario = input("Insira seu usuário: ")
 senha = getpass.getpass("Insira sua senha: ")
-numero_de_livros = int(input("Insira o número de livros: "))
-
 
 driver = webdriver.Chrome()
 driver.get("https://portal.ufsm.br/biblioteca/login.html")
@@ -26,6 +25,18 @@ pagina_renovacao = driver.find_element(By.XPATH, '//*[@id="app_top"]/nav/div/ul/
 pagina_renovacao.click()
 
 data_atual = strftime("%d/%m/%Y", time.localtime())
+
+
+numero_de_livros = 0
+i = 0
+try:
+    while True:
+        data_limite = driver.find_element(By.XPATH, f'//*[@id="emprestimos"]/tbody/tr[{i+1}]/td[6]').text
+        numero_de_livros += 1
+        i += 1
+
+except NoSuchElementException:
+    print(f"Número de livros: {numero_de_livros}")
 
 
 for i in range(numero_de_livros):
