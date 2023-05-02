@@ -41,6 +41,5 @@ jobs:
         SENHA: ${{ secrets.SENHA }}
         USER: ${{ secrets.USER }}
         
-      run: |
-        pytest
+      run: script_renovador.py
       
