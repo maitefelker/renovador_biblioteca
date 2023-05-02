@@ -15,12 +15,7 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    steps:
-    - name: get username and password
-      env:
-        SENHA: ${{ secrets.SENHA }}
-        USER: ${{ secrets.USER }}
-      
+    steps:      
     - uses: browser-actions/setup-chrome@v1
     - run: chrome --version
     - uses: actions/checkout@v3
@@ -40,5 +35,11 @@ jobs:
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
+      
+      env:
+        SENHA: ${{ secrets.SENHA }}
+        USER: ${{ secrets.USER }}
+        
       run: |
         pytest
+      
