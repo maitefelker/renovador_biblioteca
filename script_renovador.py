@@ -6,11 +6,11 @@ from selenium.common.exceptions import NoSuchElementException
 import time
 from time import gmtime, strftime
 
+import os
 import getpass
 
-usuario = input("Insira seu usuário: ")
-senha = getpass.getpass("Insira sua senha: ")
-
+usuario = os.environ['USER']
+senha = os.environ['SENHA']
 driver = webdriver.Chrome()
 driver.get("https://portal.ufsm.br/biblioteca/login.html")
 
