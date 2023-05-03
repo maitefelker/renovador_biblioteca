@@ -45,7 +45,7 @@ jobs:
     - name: Test with pytest
       
       env:
-        PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
+        PATH: "/opt/hostedtoolcache/chromium/latest/x64/chrome"
         SENHA: ${{ secrets.SENHA }}
         USER: ${{ secrets.USER }}
         
