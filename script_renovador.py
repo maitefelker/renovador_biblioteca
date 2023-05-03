@@ -67,5 +67,3 @@ for i in range(numero_de_livros):
         print(f"Livro número {i+1} não foi renovado (está antes ou depois do prazo)")
 
 driver.quit()
-
-input("ENTER")
