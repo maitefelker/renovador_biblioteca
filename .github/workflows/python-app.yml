@@ -18,6 +18,8 @@ jobs:
 
     steps:      
     - uses: browser-actions/setup-chrome@v1
+      with: 
+        chrome-version: stable
     - run: chrome --version
     - uses: actions/checkout@v3
     - name: Install chromedriver
