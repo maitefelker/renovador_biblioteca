@@ -13,6 +13,8 @@ path = os.environ['PATH']
 usuario = os.environ['USER']
 senha = os.environ['SENHA']
 
+ChromeOptions options = new ChromeOptions()
+options.addArguments("--no-sandbox")
 driver = webdriver.Chrome(executable_path=f'{path}')
 driver.get("https://portal.ufsm.br/biblioteca/login.html")
 
