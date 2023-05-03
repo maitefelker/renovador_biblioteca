@@ -24,7 +24,7 @@ chrome_options.add_argument('start-maximized')
 chrome_options.add_argument('--disable-gpu')
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
-chrome_options.binary_location('{path}')
+chrome_options.binary_location(path)
 driver = webdriver.Chrome(executable_path=f"{path}", chrome_options=chrome_options)
 driver.get("https://portal.ufsm.br/biblioteca/login.html")
 
