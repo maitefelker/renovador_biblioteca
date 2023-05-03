@@ -9,9 +9,11 @@ from time import gmtime, strftime
 import os
 import getpass
 
+path = os.environ['PATH']
 usuario = os.environ['USER']
 senha = os.environ['SENHA']
-driver = webdriver.Chrome(executable_path=r'/opt/hostedtoolcache/chromium/latest/x64/chrome')
+
+driver = webdriver.Chrome(executable_path=f'{path}')
 driver.get("https://portal.ufsm.br/biblioteca/login.html")
 
 campo_usuario = driver.find_element(By.XPATH, '//*[@id="login"]')
