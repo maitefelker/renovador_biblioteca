@@ -24,7 +24,7 @@ chrome_options.add_argument('--disable-gpu')
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
 chrome_options.binary_location('/opt/hostedtoolcache/chromium/latest/x64/chrome')
-driver = webdriver.Chrome(executable_path=f"{path}", chrome_options=chrome_options)
+driver = webdriver.Chrome(chrome_options=chrome_options)
 driver.get("https://portal.ufsm.br/biblioteca/login.html")
 
 campo_usuario = driver.find_element(By.XPATH, '//*[@id="login"]')
