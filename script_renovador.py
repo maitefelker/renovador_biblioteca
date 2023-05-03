@@ -10,7 +10,6 @@ from time import gmtime, strftime
 import os
 import getpass
 
-path = os.environ['PATH']
 usuario = os.environ['USER']
 senha = os.environ['SENHA']
 
@@ -24,7 +23,7 @@ chrome_options.add_argument('start-maximized')
 chrome_options.add_argument('--disable-gpu')
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
-chrome_options.binary_location(path)
+chrome_options.binary_location('/opt/hostedtoolcache/chromium/latest/x64/chrome')
 driver = webdriver.Chrome(executable_path=f"{path}", chrome_options=chrome_options)
 driver.get("https://portal.ufsm.br/biblioteca/login.html")
 
