@@ -20,6 +20,13 @@ jobs:
     - uses: browser-actions/setup-chrome@v1
     - run: chrome --version
     - uses: actions/checkout@v3
+    - name: Install chromedriver
+      run: |
+        LATEST_VERSION=$(curl -s https://chromedriver.storage.googleapis.com/LATEST_RELEASE)
+        wget https://chromedriver.storage.googleapis.com/$LATEST_VERSION/chromedriver_linux64.zip
+        unzip chromedriver_linux64.zip
+        sudo mv chromedriver /usr/local/bin/
+        chromedriver --version
     - name: Set up Python 3.10
       uses: actions/setup-python@v3
       with:
