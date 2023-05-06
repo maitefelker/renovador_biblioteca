@@ -40,12 +40,10 @@ data_atual = strftime("%d/%m/%Y", time.localtime())
 
 
 numero_de_livros = 0
-i = 0
 try:
     while True:
-        data_limite = driver.find_element(By.XPATH, f'//*[@id="emprestimos"]/tbody/tr[{i+1}]/td[6]').text
+        data_limite = driver.find_element(By.XPATH, f'//*[@id="emprestimos"]/tbody/tr[{numero_de_livros+1}]/td[6]').text
         numero_de_livros += 1
-        i += 1
 
 except NoSuchElementException:
     print(f"Número de livros: {numero_de_livros}")
@@ -53,17 +51,26 @@ except NoSuchElementException:
 
 for i in range(numero_de_livros):
 
+
+
+    titulo = driver.find_element(By.XPATH, f'//*[@id="emprestimos"]/tbody/tr[1]/td[3]').text
+    qnt_renovacoes = int(driver.find_element(By.XPATH, f'//*[@id="emprestimos"]/tbody/tr[{i+1}]/td[7]').text)
     data_limite = driver.find_element(By.XPATH, f'//*[@id="emprestimos"]/tbody/tr[{i+1}]/td[6]').text
 
+    print(f"Livro: {titulo}")
     print(f"Data limite: {data_limite}")
     print(f"Data atual: {data_atual}")
+    print(f"Quantidade de renovaçõees: {qnt_renovacoes}")
 
-    if data_atual == data_limite:
+    if qnt_renovacoes >= 14:
+        raise Exception(f'Impossível renovar livro "{titulo}": surpassa quantia máxima de renovações')
+
+    elif data_atual == data_limite:
         botao_renovacao = driver.find_element(By.XPATH, f'//*[@id="emprestimos"]/tbody/tr[{i+1}]/td[1]/button')
         botao_renovacao.click()
-        print(f"Livro número {i+1} renovado")
+        print(f'Livro "{titulo}" renovado')
 
     else:
-        print(f"Livro número {i+1} não foi renovado (está antes ou depois do prazo)")
+        print(f'Livro número "{titulo}" não foi renovado (está antes ou depois do prazo)')
 
 driver.quit()
