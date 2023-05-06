@@ -53,7 +53,7 @@ for i in range(numero_de_livros):
 
 
 
-    titulo = driver.find_element(By.XPATH, f'//*[@id="emprestimos"]/tbody/tr[1]/td[3]').text
+    titulo = driver.find_element(By.XPATH, f'//*[@id="emprestimos"]/tbody/tr[{i+1}]/td[3]').text
     qnt_renovacoes = int(driver.find_element(By.XPATH, f'//*[@id="emprestimos"]/tbody/tr[{i+1}]/td[7]').text)
     data_limite = driver.find_element(By.XPATH, f'//*[@id="emprestimos"]/tbody/tr[{i+1}]/td[6]').text
 
