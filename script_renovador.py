@@ -56,11 +56,12 @@ for i in range(numero_de_livros):
     titulo = driver.find_element(By.XPATH, f'//*[@id="emprestimos"]/tbody/tr[{i+1}]/td[3]').text
     qnt_renovacoes = int(driver.find_element(By.XPATH, f'//*[@id="emprestimos"]/tbody/tr[{i+1}]/td[7]').text)
     data_limite = driver.find_element(By.XPATH, f'//*[@id="emprestimos"]/tbody/tr[{i+1}]/td[6]').text
-
+      
+    print("")
     print(f"Livro: {titulo}")
     print(f"Data limite: {data_limite}")
     print(f"Data atual: {data_atual}")
-    print(f"Quantidade de renovaçõees: {qnt_renovacoes}")
+    print(f"Quantidade de renovações: {qnt_renovacoes}")
 
     if qnt_renovacoes >= 14:
         raise Exception(f'Impossível renovar livro "{titulo}": surpassa quantia máxima de renovações')
@@ -71,6 +72,6 @@ for i in range(numero_de_livros):
         print(f'Livro "{titulo}" renovado')
 
     else:
-        print(f'Livro número "{titulo}" não foi renovado (está antes ou depois do prazo)')
+        print(f'Livro "{titulo}" não foi renovado (está antes ou depois do prazo)')
 
 driver.quit()
