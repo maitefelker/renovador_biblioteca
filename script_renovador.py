@@ -63,10 +63,7 @@ for i in range(numero_de_livros):
     print(f"Data atual: {data_atual}")
     print(f"Quantidade de renovações: {qnt_renovacoes}")
 
-    if qnt_renovacoes >= 14:
-        raise Exception(f'Impossível renovar livro "{titulo}": surpassa quantia máxima de renovações')
-
-    elif data_atual == data_limite:
+    if data_atual == data_limite:
         botao_renovacao = driver.find_element(By.XPATH, f'//*[@id="emprestimos"]/tbody/tr[{i+1}]/td[1]/button')
         botao_renovacao.click()
         print(f'Livro "{titulo}" renovado')
